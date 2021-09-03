@@ -1,25 +1,34 @@
 let numbersList = [];
 let numbersPromptList = [];
 let numbers;
+let randomNumbers = 5;
 
-function getRandomNumber(min, max){ 
-    return Math.floor(Math.random() * (max - min + 1) + min);
+
+function getRandomNumbers(random) {
+    let array = [];
+    while (array.length < random) {
+      randomNumbers = Math.floor(Math.random() * 100) + 1;
+      if (array.indexOf(randomNumbers) === -1) {
+        array.push(randomNumbers);
+      }
+    }
+    return array;
 }
 
-for(i = 0; i < 5; i++){
-    numbersList.push(getRandomNumber(1, 100));
-}
-alert("Numeri randomici:" + " " + numbersList);
 
+numbersList = getRandomNumbers(randomNumbers);
+alert("Numero randomico:" + " " + numbersList);
 
 
 setTimeout(function () {
     for (i = 0; i < 5; i++) {
         numbers = parseInt(prompt("Prova ad indovinare i numeri:"));
-
         for (j = 0; j < numbersList.length; j++) {
             if (numbers == numbersList[j]) {
                 numbersPromptList.push(numbers);
+            } else if( isNaN(numbers)){
+                alert("Non hai inserito un numero, conta come errore!!!")
+                break;
             }
         }
     }
