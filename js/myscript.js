@@ -1,5 +1,6 @@
 let numbersList = [];
-
+let numbersPromptList = [];
+let numbers;
 
 function getRandomNumber(min, max){ 
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -7,17 +8,26 @@ function getRandomNumber(min, max){
 
 for(i = 0; i < 5; i++){
     numbersList.push(getRandomNumber(1, 100));
-    alert("Numero randomico:" + " " + numbersList);
 }
+alert("Numeri randomici:" + " " + numbersList);
 
-numbers = myFunction();
 
-function myFunction(){
-    setTimeout(function(){
-        for(i = 0; i < 5; i++){
-            parseInt(prompt("Prova ad indovinare i numeri:"));
+
+setTimeout(function () {
+    for (i = 0; i < 5; i++) {
+        numbers = parseInt(prompt("Prova ad indovinare i numeri:"));
+
+        for (j = 0; j < numbersList.length; j++) {
+            if (numbers == numbersList[j]) {
+                numbersPromptList.push(numbers);
+            }
         }
-    },3000);
-}
+    }
+    alert("Hai indovinato " + numbersPromptList.length + " numero/i, ovvero: " + numbersPromptList)
+}, 10000);
+
+
+
+
 
 
